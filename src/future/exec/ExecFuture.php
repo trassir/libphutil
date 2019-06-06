@@ -75,6 +75,7 @@ final class ExecFuture extends PhutilExecutableFuture {
     $argv = func_get_args();
     $this->command = call_user_func_array('csprintf', $argv);
     $this->stdin = new PhutilRope();
+    $this->setUseWindowsFileStreams(true);
   }
 
 
