@@ -81,7 +81,9 @@ function __phutil_init_script__() {
 
   // Disable the insanely dangerous XML entity loader by default.
   if (function_exists('libxml_disable_entity_loader')) {
-    libxml_disable_entity_loader(true);
+    if (\PHP_VERSION_ID < 80000) {
+      libxml_disable_entity_loader(true);
+    }
   }
 
   // Now, load libphutil.
